@@ -7,6 +7,7 @@ const User = require('../models/user.model');
  * @public
  */
 exports.load = async (req, res, next, id) => {
+
   try {
     const user = await User.get(id);
     req.locals = { user };

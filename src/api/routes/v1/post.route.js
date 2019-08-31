@@ -2,7 +2,8 @@ const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/post.controller');
 const commentController = require('../../controllers/comment.controller');
-const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
+const userController = require('../../controllers/user.controller');
+const { authorize, LOGGED_USER } = require('../../middlewares/auth');
 const {
   listPosts,
   createPost,
@@ -18,9 +19,9 @@ const {
 const router = express.Router();
 
 /**
- * Load post when API with postId route parameter is hit
+ * Load user when API with userId route parameter is hit
  */
-router.param('postId', controller.load);
+router.param('userId', userController.load);
 
 
 router
@@ -72,7 +73,7 @@ router
    * @apiError (Unauthorized 401)  Unauthorized     Only authenticated posts can create the data
    * @apiError (Forbidden 403)     Forbidden        Only admins can create the data
    */
-  .post(authorize(ADMIN), validate(createPost), controller.create);
+  .post(authorize(LOGGED_USER), validate(createPost), controller.create);
 
 router
   .route('/:postId')

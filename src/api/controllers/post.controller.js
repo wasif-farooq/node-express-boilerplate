@@ -38,12 +38,13 @@ exports.loggedIn = (req, res) => res.json(req.post.transform());
  */
 exports.create = async (req, res, next) => {
   try {
+    console.log("req : ", req.body);
     const post = new Post(req.body);
-    const savedPost = await Post.save();
+    const savedPost = await post.save();
     res.status(httpStatus.CREATED);
     res.json(savedPost.transform());
   } catch (error) {
-    next(Post.checkDuplicateEmail(error));
+    next(error);
   }
 };
 

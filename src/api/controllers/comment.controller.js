@@ -39,12 +39,12 @@ exports.loggedIn = (req, res) => res.json(req.user.transform());
  */
 exports.create = async (req, res, next) => {
   try {
-    const comment = new User(req.body);
-    const savedComment = await Comment.save();
+    const comment = new Comment(req.body);
+    const savedComment = await comment.save();
     res.status(httpStatus.CREATED);
     res.json(savedComment.transform());
   } catch (error) {
-    next(Comment.checkDuplicateEmail(error));
+    next(error);
   }
 };
 
@@ -65,13 +65,13 @@ exports.replace = async (req, res, next) => {
 
     res.json(savedComment.transform());
   } catch (error) {
-    next(Comment.checkDuplicateEmail(error));
+    next(error);
   }
 };
 
 
 /**
- * Update existing user
+ * Update existing comment
  * @public
  */
 exports.update = (req, res, next) => {
@@ -84,7 +84,7 @@ exports.update = (req, res, next) => {
 
 
 /**
- * Get user list
+ * Get commentf list
  * @public
  */
 exports.list = async (req, res, next) => {
@@ -99,7 +99,7 @@ exports.list = async (req, res, next) => {
 
 
 /**
- * Delete user
+ * Delete comment
  * @public
  */
 exports.remove = (req, res, next) => {

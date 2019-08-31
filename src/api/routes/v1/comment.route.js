@@ -1,6 +1,7 @@
 const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/comment.controller');
+const userController = require('../../controllers/user.controller');
 const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
 const {
   replaceComment,
@@ -9,10 +10,11 @@ const {
 
 const router = express.Router();
 
+
 /**
- * Load comment when API with commentId route parameter is hit
+ * Load user when API with userId route parameter is hit
  */
-router.param('commentId', controller.load);
+router.param('userId', userController.load);
 
 router
   .route('/:commentId')
