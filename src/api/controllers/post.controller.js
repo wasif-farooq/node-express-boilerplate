@@ -1,11 +1,10 @@
 const httpStatus = require('http-status');
 const { omit } = require('lodash');
-const User = require('../models/user.model');
 const Post = require('../models/post.model');
 
 
 /**
- * Load user and append to req.
+ * Load post and append to req.
  * @public
  */
 exports.load = async (req, res, next, id) => {
@@ -20,26 +19,26 @@ exports.load = async (req, res, next, id) => {
 
 
 /**
- * Get user
+ * Get post
  * @public
  */
 exports.get = (req, res) => res.json(req.locals.post.transform());
 
 
 /**
- * Get logged in user info
+ * Get logged in post info
  * @public
  */
-exports.loggedIn = (req, res) => res.json(req.user.transform());
+exports.loggedIn = (req, res) => res.json(req.post.transform());
 
 
 /**
- * Create new user
+ * Create new post
  * @public
  */
 exports.create = async (req, res, next) => {
   try {
-    const post = new User(req.body);
+    const post = new Post(req.body);
     const savedPost = await Post.save();
     res.status(httpStatus.CREATED);
     res.json(savedPost.transform());
@@ -48,9 +47,29 @@ exports.create = async (req, res, next) => {
   }
 };
 
+/**
+ * Replace existing post
+ * @public
+ */
+exports.replace = async (req, res, next) => {
+  try {
+    const { post } = req.locals;
+    const newPost = new Post(req.body);
+    const ommitRole = post.role !== 'admin' ? 'role' : '';
+    const newPostObject = omit(newPost.toObject(), '_id', ommitRole);
+
+    await post.update(newPostObject, { override: true, upsert: true });
+    const savedPost = await Post.findById(post._id);
+
+    res.json(savedPost.transform());
+  } catch (error) {
+    next(Post.checkDuplicateEmail(error));
+  }
+};
+
 
 /**
- * Update existing user
+ * Update existing post
  * @public
  */
 exports.update = (req, res, next) => {
@@ -63,7 +82,7 @@ exports.update = (req, res, next) => {
 
 
 /**
- * Get user list
+ * Get post list
  * @public
  */
 exports.list = async (req, res, next) => {
@@ -78,7 +97,7 @@ exports.list = async (req, res, next) => {
 
 
 /**
- * Delete user
+ * Delete post
  * @public
  */
 exports.remove = (req, res, next) => {

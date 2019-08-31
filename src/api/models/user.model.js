@@ -7,6 +7,7 @@ const jwt = require('jwt-simple');
 const uuidv4 = require('uuid/v4');
 const APIError = require('../utils/APIError');
 const { env, jwtSecret, jwtExpirationInterval } = require('../../config/vars');
+const Post = require('./post.model');
 
 /**
 * User Roles
@@ -70,6 +71,22 @@ userSchema.pre('save', async function save(next) {
     const hash = await bcrypt.hash(this.password, rounds);
     this.password = hash;
 
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+});
+
+
+/**
+ * Add your
+ * - pre-save hooks
+ * - validations
+ * - virtuals
+ */
+userSchema.pre('remove', async function save(next) {
+  try {
+    await Post.remveUserPosts(this.id);
     return next();
   } catch (error) {
     return next(error);
@@ -227,10 +244,11 @@ userSchema.statics = {
     return this.create({
       services: { [service]: id }, email, password, name, picture,
     });
-  },
+  }
 };
 
 /**
  * @typedef User
  */
-module.exports = mongoose.model('User', userSchema);
+const user = mongoose.model('User', userSchema);
+module.exports = user;

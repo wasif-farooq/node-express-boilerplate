@@ -1,6 +1,8 @@
 const express = require('express');
 const userRoutes = require('./user.route');
 const authRoutes = require('./auth.route');
+const postRoutes = require('./post.route');
+const commentRoutes = require('./comment.route');
 
 const router = express.Router();
 
@@ -14,6 +16,8 @@ router.get('/status', (req, res) => res.send('OK'));
  */
 router.use('/docs', express.static('docs'));
 
+router.use('/posts', postRoutes);
+router.use('/comments', commentRoutes);
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes);
 

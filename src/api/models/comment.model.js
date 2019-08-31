@@ -39,7 +39,7 @@ const commentSchema = new mongoose.Schema({
   timestamps: true,
 });
 
-postSchema.statics = {
+commentSchema.statics = {
   transform() {
     const transformed = {};
     const fields = ['id', 'message', 'owner', 'createdBy', 'updatedBy'];
@@ -49,8 +49,13 @@ postSchema.statics = {
     });
 
     return transformed;
-  }
+  },
 
+  removePostComments(owner) {
+    Comment.findOneAndRemove({
+      'owner.$id': owner
+    });
+  }
 };
 
 /**

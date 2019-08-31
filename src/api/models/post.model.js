@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const moment = require('moment-timezone');
+const Comment = require('./comment.model');
 
 /**
  * Refresh Token Schema
@@ -43,6 +44,22 @@ postSchema.pre('save', async function save(next) {
 
 });
 
+
+/**
+ * Add your
+ * - pre-save hooks
+ * - validations
+ * - virtuals
+ */
+postSchema.pre('remove', async function save(next) {
+  try {
+    await Comment.removePostComments(this.id);
+    return next();
+  } catch (error) {
+    return next(error);
+  }
+});
+
 postSchema.statics = {
   transform() {
     const transformed = {};
@@ -53,6 +70,12 @@ postSchema.statics = {
     });
 
     return transformed;
+  },
+
+  async remveUserPosts(owner) {
+    await Post.findOneAndRemove({
+      'owner.$id': owner
+    });
   }
 };
 
