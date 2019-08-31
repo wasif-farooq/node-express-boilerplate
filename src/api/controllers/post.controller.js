@@ -104,7 +104,7 @@ exports.list = async (req, res, next) => {
 exports.remove = (req, res, next) => {
   const { postId } = req.params;
 
-  Post.remove(postId, req.user._id)
+  Post.remove(postId)
     .then(() => res.status(httpStatus.NO_CONTENT).end())
     .catch(e => next(e));
 };

@@ -120,15 +120,15 @@ postSchema.statics = {
       .exec();
   },
 
-  async remove(id, user) {
-    const post = await this.findById(id).exec();
-    console.log(post.createdBy.toString(), user);
-    if (post.createdBy.toString() !== user.toString()) {
-      throw new APIError({
-        message: 'You not allowed to perfome this action',
-        status: httpStatus.FORBIDDEN,
-      });
+  async checkOnwer(id, user) {
+    const comment = await this.findById(id).exec();
+    if (comment.createdBy.toString() !== user.toString()) {
+      return false;
     }
+    return true;
+  },
+
+  async remove(id) {
     return this.findOneAndRemove(id).exec();
   },
 };

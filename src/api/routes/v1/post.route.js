@@ -4,6 +4,9 @@ const controller = require('../../controllers/post.controller');
 const commentController = require('../../controllers/comment.controller');
 const userController = require('../../controllers/user.controller');
 const { authorize, LOGGED_USER } = require('../../middlewares/auth');
+const { isOwner } = require('../../middlewares/owner');
+const Post = require('../models/post.model');
+
 const {
   listPosts,
   createPost,
@@ -125,7 +128,7 @@ router
    * @apiError (Forbidden 403)    Forbidden    Only post with same id or admins can modify the data
    * @apiError (Not Found 404)    NotFound     Post does not exist
    */
-  .put(authorize(LOGGED_USER), validate(replacePost), controller.replace)
+  .put(authorize(LOGGED_USER), validate(replacePost), isOwner('postId', Post), controller.replace)
   /**
    * @api {patch} v1/posts/:id Update Post
    * @apiDescription Update some fields of a post document
@@ -153,7 +156,7 @@ router
    * @apiError (Forbidden 403)    Forbidden    Only post with same id or admins can modify the data
    * @apiError (Not Found 404)    NotFound     Post does not exist
    */
-  .patch(authorize(LOGGED_USER), validate(updatePost), controller.update)
+  .patch(authorize(LOGGED_USER), validate(updatePost), isOwner('postId', Post),controller.update)
   /**
    * @api {patch} v1/posts/:id Delete Post
    * @apiDescription Delete a post
@@ -170,7 +173,7 @@ router
    * @apiError (Forbidden 403)    Forbidden     Only post with same id or admins can delete the data
    * @apiError (Not Found 404)    NotFound      Post does not exist
    */
-  .delete(authorize(LOGGED_USER), controller.remove);
+  .delete(authorize(LOGGED_USER), isOwner('postId', Post),controller.remove);
 
 router
   .route('/:postId/comments')

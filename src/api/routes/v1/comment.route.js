@@ -3,6 +3,8 @@ const validate = require('express-validation');
 const controller = require('../../controllers/comment.controller');
 const userController = require('../../controllers/user.controller');
 const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
+const { isOwner } = require('../../middlewares/owner');
+const Comment = require('../models/comment.model');
 const {
   replaceComment,
   updateComment,
@@ -66,7 +68,7 @@ router
    * @apiError (Forbidden 403)    Forbidden    Only comment with same id or admins can modify the data
    * @apiError (Not Found 404)    NotFound     Comment does not exist
    */
-  .put(authorize(LOGGED_USER), validate(replaceComment), controller.replace)
+  .put(authorize(LOGGED_USER), validate(replaceComment), isOwner('commentId', Comment), controller.replace)
   /**
    * @api {patch} v1/comments/:id Update Comment
    * @apiDescription Update some fields of a comment document
@@ -94,7 +96,7 @@ router
    * @apiError (Forbidden 403)    Forbidden    Only comment with same id or admins can modify the data
    * @apiError (Not Found 404)    NotFound     Comment does not exist
    */
-  .patch(authorize(LOGGED_USER), validate(updateComment), controller.update)
+  .patch(authorize(LOGGED_USER), validate(updateComment), isOwner('commentId', Comment),controller.update)
   /**
    * @api {patch} v1/comments/:id Delete Comment
    * @apiDescription Delete a comment
@@ -111,7 +113,7 @@ router
    * @apiError (Forbidden 403)    Forbidden     Only comment with same id or admins can delete the data
    * @apiError (Not Found 404)    NotFound      Comment does not exist
    */
-  .delete(authorize(LOGGED_USER), controller.remove);
+  .delete(authorize(LOGGED_USER), isOwner('commentId', Comment),controller.remove);
 
 
 module.exports = router;
