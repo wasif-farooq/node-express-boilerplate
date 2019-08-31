@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 const moment = require('moment-timezone');
 const { omitBy, isNil } = require('lodash');
+const APIError = require('../utils/APIError');
+const httpStatus = require('http-status');
 
 /**
  * Refresh Token Schema
@@ -47,9 +49,9 @@ commentSchema.method({
     return transformed;
   },
 
-  removePostComments(owner) {
-    Comment.findOneAndRemove({
-      'owner.$id': owner
+  removePostComments(createdBy) {
+    return Comment.findOneAndRemove({
+      'createdBy.$id': createdBy
     });
   }
 });
@@ -90,14 +92,25 @@ commentSchema.statics = {
    */
   list({
          page = 1, perPage = 30, message
-       }) {
-    const options = omitBy({ message }, isNil);
+       }, { postId }) {
+    const options = omitBy({ message, postId }, isNil);
 
     return this.find(options)
       .sort({ createdAt: -1 })
       .skip(perPage * (page - 1))
       .limit(perPage)
       .exec();
+  },
+
+  async remove(id, user) {
+    const comment = await this.findById(id).exec();
+    if (comment.createdBy.toString() !== user.toString()) {
+      throw new APIError({
+        message: 'You not allowed to perfome this action',
+        status: httpStatus.FORBIDDEN,
+      });
+    }
+    return this.findOneAndRemove(id).exec();
   },
 };
 

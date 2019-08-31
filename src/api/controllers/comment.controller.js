@@ -89,7 +89,7 @@ exports.update = (req, res, next) => {
  */
 exports.list = async (req, res, next) => {
   try {
-    const comments = await Comment.list(req.query);
+    const comments = await Comment.list(req.query, req.params);
     const transformedComments = comments.map(comment => comment.transform());
     res.json(transformedComments);
   } catch (error) {
@@ -103,9 +103,9 @@ exports.list = async (req, res, next) => {
  * @public
  */
 exports.remove = (req, res, next) => {
-  const { comment } = req.locals;
+  const commentId = req.params.commentId;
 
-  comment.remove()
+  Comment.remove(commentId, req.user._id)
     .then(() => res.status(httpStatus.NO_CONTENT).end())
     .catch(e => next(e));
 };

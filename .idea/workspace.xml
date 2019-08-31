@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b9b3cca0-37d1-4b0d-88ef-f827041550d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/comment.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/comment.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/post.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/post.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/middlewares/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/middlewares/auth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/models/comment.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/comment.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/models/post.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/post.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/v1/comment.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/v1/comment.route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/v1/post.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/v1/post.route.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/src/api/controllers/user.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="222">
-              <caret line="35" column="14" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="14" />
+              <caret line="98" column="14" selection-start-line="98" selection-start-column="7" selection-end-line="98" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -43,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/src/api/middlewares/auth.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+              <caret line="27" column="44" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -51,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/controllers/post.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+            <state relative-caret-position="978">
+              <caret line="106" column="34" selection-start-line="106" selection-start-column="34" selection-end-line="106" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -60,8 +55,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/api/models/comment.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+            <state relative-caret-position="-30">
+              <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/api_data.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="439" column="42" selection-start-line="439" selection-start-column="36" selection-end-line="439" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -69,8 +73,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/models/post.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="44" />
+            <state relative-caret-position="244">
+              <caret line="124" column="49" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -78,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/controllers/comment.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="42" column="22" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="22" />
+            <state relative-caret-position="180">
+              <caret line="91" column="61" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -87,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/routes/v1/comment.route.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-42">
-              <caret line="2" column="16" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="16" />
+            <state relative-caret-position="520">
+              <caret line="113" column="33" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -96,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/models/user.model.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="196" column="8" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="8" />
+            <state relative-caret-position="42">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -106,15 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>generateTokenResponse</find>
-      <find>jwtExpirationInterval</find>
-      <find>JWT_EXPIRATION_MINUTES</find>
-      <find>_loggedUser</find>
-      <find>userId</find>
-      <find>LOGGED_USER</find>
-      <find>listPosts</find>
-      <find>createPost</find>
-      <find>roles</find>
       <find>LOGGED_USER</find>
       <find>load</find>
       <find>handleJWT</find>
@@ -136,6 +131,15 @@
       <find>user</find>
       <find>savedComment</find>
       <find>trans</find>
+      <find>.delete</find>
+      <find>admins</find>
+      <find>findById</find>
+      <find>APIError</find>
+      <find>removePostComments</find>
+      <find>.remove</find>
+      <find>httpStatus</find>
+      <find>list`</find>
+      <find>list</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -159,13 +163,13 @@
         <option value="$PROJECT_DIR$/src/api/models/user.model.js" />
         <option value="$PROJECT_DIR$/docs/api_data.js" />
         <option value="$PROJECT_DIR$/docker-compose.dev.yml" />
-        <option value="$PROJECT_DIR$/src/api/routes/v1/comment.route.js" />
         <option value="$PROJECT_DIR$/src/api/routes/v1/user.route.js" />
         <option value="$PROJECT_DIR$/src/api/routes/v1/post.route.js" />
         <option value="$PROJECT_DIR$/src/api/controllers/user.controller.js" />
         <option value="$PROJECT_DIR$/src/api/middlewares/auth.js" />
-        <option value="$PROJECT_DIR$/src/api/controllers/post.controller.js" />
+        <option value="$PROJECT_DIR$/src/api/routes/v1/comment.route.js" />
         <option value="$PROJECT_DIR$/src/api/models/post.model.js" />
+        <option value="$PROJECT_DIR$/src/api/controllers/post.controller.js" />
         <option value="$PROJECT_DIR$/src/api/controllers/comment.controller.js" />
         <option value="$PROJECT_DIR$/src/api/models/comment.model.js" />
       </list>
@@ -284,12 +288,12 @@
       <updated>1567079558684</updated>
       <workItem from="1567079560353" duration="8618000" />
       <workItem from="1567171000355" duration="4569000" />
-      <workItem from="1567220771089" duration="26955000" />
+      <workItem from="1567220771089" duration="30066000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40142000" />
+    <option name="totallyTimeSpent" value="43253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1368" height="805" extended-state="6" />
@@ -411,13 +415,6 @@
     <entry file="file://$PROJECT_DIR$/docs/api_project.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/api_data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="1657" column="34" selection-start-line="1657" selection-start-column="34" selection-end-line="1657" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/routes/v1/auth.route.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -467,48 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/controllers/user.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/controllers/post.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/middlewares/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="39" column="18" lean-forward="true" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/models/user.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="196" column="8" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/models/post.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-end-line="4" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/routes/v1/comment.route.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/validations/comment.validation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
@@ -523,17 +478,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/controllers/comment.controller.js">
+    <entry file="file://$PROJECT_DIR$/src/api/controllers/user.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
-          <caret line="42" column="22" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="22" />
+          <caret line="98" column="14" selection-start-line="98" selection-start-column="7" selection-end-line="98" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/routes/v1/comment.route.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="113" column="33" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/middlewares/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/api_data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="439" column="42" selection-start-line="439" selection-start-column="36" selection-end-line="439" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/models/user.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/models/post.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="124" column="49" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/controllers/post.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="978">
+          <caret line="106" column="34" selection-start-line="106" selection-start-column="34" selection-end-line="106" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/controllers/comment.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="91" column="61" selection-start-line="91" selection-start-column="61" selection-end-line="91" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/api/models/comment.model.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+        <state relative-caret-position="-30">
+          <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
         </state>
       </provider>
     </entry>

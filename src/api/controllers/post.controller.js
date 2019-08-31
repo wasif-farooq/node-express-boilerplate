@@ -102,9 +102,9 @@ exports.list = async (req, res, next) => {
  * @public
  */
 exports.remove = (req, res, next) => {
-  const { post } = req.locals;
+  const { postId } = req.params;
 
-  post.remove()
+  Post.remove(postId, req.user._id)
     .then(() => res.status(httpStatus.NO_CONTENT).end())
     .catch(e => next(e));
 };

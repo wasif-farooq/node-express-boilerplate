@@ -3,6 +3,9 @@ const crypto = require('crypto');
 const moment = require('moment-timezone');
 const Comment = require('./comment.model');
 const { omitBy, isNil } = require('lodash');
+const APIError = require('../utils/APIError');
+const httpStatus = require('http-status');
+
 /**
  * Refresh Token Schema
  * @private
@@ -115,6 +118,18 @@ postSchema.statics = {
       .skip(perPage * (page - 1))
       .limit(perPage)
       .exec();
+  },
+
+  async remove(id, user) {
+    const post = await this.findById(id).exec();
+    console.log(post.createdBy.toString(), user);
+    if (post.createdBy.toString() !== user.toString()) {
+      throw new APIError({
+        message: 'You not allowed to perfome this action',
+        status: httpStatus.FORBIDDEN,
+      });
+    }
+    return this.findOneAndRemove(id).exec();
   },
 };
 /**
