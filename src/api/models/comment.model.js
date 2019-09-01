@@ -15,6 +15,11 @@ const commentSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
+  postId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post',
+    required: true,
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -40,7 +45,7 @@ const commentSchema = new mongoose.Schema({
 commentSchema.method({
   transform() {
     const transformed = {};
-    const fields = ['id', 'message', 'createdBy', 'updatedBy'];
+    const fields = ['id', 'message', 'postId', 'createdBy', 'updatedBy'];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
@@ -48,12 +53,6 @@ commentSchema.method({
 
     return transformed;
   },
-
-  removePostComments(createdBy) {
-    return Comment.findOneAndRemove({
-      'createdBy.$id': createdBy
-    });
-  }
 });
 
 commentSchema.statics = {
@@ -68,10 +67,10 @@ commentSchema.statics = {
       let user;
 
       if (mongoose.Types.ObjectId.isValid(id)) {
-        user = await this.findById(id).exec();
+        comment = await this.findById(id).exec();
       }
       if (user) {
-        return user;
+        return comment;
       }
 
       throw new APIError({
@@ -95,6 +94,8 @@ commentSchema.statics = {
        }, { postId }) {
     const options = omitBy({ message, postId }, isNil);
 
+    console.log("options : ", options);
+
     return this.find(options)
       .sort({ createdAt: -1 })
       .skip(perPage * (page - 1))
@@ -102,6 +103,13 @@ commentSchema.statics = {
       .exec();
   },
 
+  /**
+   * check if the current user own this comment or not
+   *
+   * @param {string} id - comment id to check for owner.
+   * @param {string} user - current user id to compare with
+   * @returns {boolean}
+   */
   async checkOnwer(id, user) {
     const comment = await this.findById(id).exec();
     if (comment.createdBy.toString() !== user.toString()) {
@@ -113,6 +121,18 @@ commentSchema.statics = {
   async remove(id) {
     return this.findOneAndRemove(id).exec();
   },
+
+  async removePostComments(id) {
+    return this.find({
+      'postId': id
+    }).remove();
+  },
+
+  async removeUserComments(id) {
+    return this.find({
+      'createdBy': id
+    }).remove();
+  }
 };
 
 /**

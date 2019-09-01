@@ -4,7 +4,7 @@ const controller = require('../../controllers/comment.controller');
 const userController = require('../../controllers/user.controller');
 const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
 const { isOwner } = require('../../middlewares/owner');
-const Comment = require('../models/comment.model');
+const Comment = require('../../models/comment.model');
 const {
   replaceComment,
   updateComment,

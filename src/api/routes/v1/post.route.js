@@ -5,7 +5,7 @@ const commentController = require('../../controllers/comment.controller');
 const userController = require('../../controllers/user.controller');
 const { authorize, LOGGED_USER } = require('../../middlewares/auth');
 const { isOwner } = require('../../middlewares/owner');
-const Post = require('../models/post.model');
+const Post = require('../../models/post.model');
 
 const {
   listPosts,
@@ -24,7 +24,7 @@ const router = express.Router();
 /**
  * Load user when API with userId route parameter is hit
  */
-router.param('userId', userController.load);
+router.param('postId', controller.load);
 
 
 router

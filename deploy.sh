@@ -1,12 +1,12 @@
 #!/bin/bash
-docker build -t danielfsousa/express-rest-es2017-boilerplate .
-docker push danielfsousa/express-rest-es2017-boilerplate
+docker build -t sonsor/blog .
+docker push sonsor/blog
 
 ssh deploy@$DEPLOY_SERVER << EOF
-docker pull danielfsousa/express-rest-es2017-boilerplate
-docker stop api-boilerplate || true
-docker rm api-boilerplate || true
-docker rmi danielfsousa/express-rest-es2017-boilerplate:current || true
-docker tag danielfsousa/express-rest-es2017-boilerplate:latest danielfsousa/express-rest-es2017-boilerplate:current
-docker run -d --restart always --name api-boilerplate -p 3000:3000 danielfsousa/express-rest-es2017-boilerplate:current
+docker pull sonsor/blog
+docker stop api-sonsor || true
+docker rm api-sonsor || true
+docker rmi sonsor/blog:current || true
+docker tag sonsor/blog:latest sonsor/blog:current
+docker run -d --restart always --name api-sonsor -p 3000:3000 sonsor/blog:current
 EOF

@@ -8,6 +8,7 @@ const uuidv4 = require('uuid/v4');
 const APIError = require('../utils/APIError');
 const { env, jwtSecret, jwtExpirationInterval } = require('../../config/vars');
 const Post = require('./post.model');
+const Comment = require('./comment.model');
 
 /**
 * User Roles
@@ -87,6 +88,7 @@ userSchema.pre('save', async function save(next) {
 userSchema.pre('remove', async function save(next) {
   try {
     await Post.remveUserPosts(this.id);
+    await Comment.removeUserComments(this.id);
     return next();
   } catch (error) {
     return next(error);

@@ -4,6 +4,7 @@ const User = require('../models/user.model');
 const Comment = require('../models/comment.model');
 
 
+
 /**
  * Load user and append to req.
  * @public
@@ -39,7 +40,12 @@ exports.loggedIn = (req, res) => res.json(req.user.transform());
  */
 exports.create = async (req, res, next) => {
   try {
-    const comment = new Comment(req.body);
+    const comment = new Comment(
+      Object.assign(
+        req.body,
+        { postId: req.params.postId }
+        )
+    );
     const savedComment = await comment.save();
     res.status(httpStatus.CREATED);
     res.json(savedComment.transform());

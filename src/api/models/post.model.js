@@ -16,6 +16,11 @@ const postSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
+  message: {
+    type: String,
+    required: false,
+    index: false,
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -39,22 +44,6 @@ const postSchema = new mongoose.Schema({
 });
 
 
-
-/**
- * Add your
- * - pre-save hooks
- * - validations
- * - virtuals
- */
-postSchema.pre('remove', async function save(next) {
-  try {
-    await Comment.removePostComments(this.id);
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-});
-
 postSchema.method({
   transform() {
     const transformed = {};
@@ -65,12 +54,6 @@ postSchema.method({
     });
 
     return transformed;
-  },
-
-  async remveUserPosts(owner) {
-    await Post.findOneAndRemove({
-      'owner.$id': owner
-    });
   }
 });
 
@@ -128,8 +111,15 @@ postSchema.statics = {
     return true;
   },
 
+  async remveUserPosts(id) {
+    await this.find({
+      'createdBy': id
+    }).remove();
+  },
+
   async remove(id) {
-    return this.findOneAndRemove(id).exec();
+    await Comment.removePostComments(id);
+    return this.findOneAndDelete(id).exec();
   },
 };
 /**
