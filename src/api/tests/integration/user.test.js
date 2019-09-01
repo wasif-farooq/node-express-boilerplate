@@ -53,15 +53,15 @@ describe('Users API', async () => {
     };
 
     user = {
-      email: 'sousa.dfs@gmail.com',
+      email: 'admin@g.com',
       password,
-      name: 'Daniel Sousa',
+      name: 'test user',
     };
 
     admin = {
-      email: 'sousa.dfs@gmail.com',
+      email: 'admin@g.com',
       password,
-      name: 'Daniel Sousa',
+      name: 'test user',
       role: 'admin',
     };
 

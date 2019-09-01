@@ -34,9 +34,9 @@ describe('Authentication API', () => {
     };
 
     user = {
-      email: 'sousa.dfs@gmail.com',
+      email: 'admin@g.com',
       password: '123456',
-      name: 'Daniel Sousa',
+      name: 'test user',
     };
 
     refreshToken = {
